@@ -59,7 +59,7 @@ app.post('/',function(req,res){
     response.on("data",function(data){
         const edata = JSON.parse(data);
         const error = edata.errors;
-        if(error != 0){
+        if(error.length != 0){
           res.sendFile(__dirname + "/failure.html");
         }
         else{
