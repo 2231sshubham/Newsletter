@@ -47,11 +47,11 @@ app.post('/',function(req,res){
 
   const jsonData = JSON.stringify(data);
 
-  const url = "https://us5.api.mailchimp.com/3.0/lists/ca8d9b474f";
+  const url = "https://us5.api.mailchimp.com/3.0/lists/{list_ID}";// replace list_ID with your list ID
 
   const options = {
     method: 'POST',
-    auth:'myKey:7caca78dfb584155a4db7eb6e7310d17-us5'
+    auth:'myKey:' // enter you API key
   };
 
   const request = https.request(url,options, function(response) {
@@ -82,7 +82,3 @@ app.post("/failure",function(req,res){
 })
 
 app.listen(process.env.PORT || 3000,callback);
-
-
-//Audience ID ca8d9b474f
-// API key 7caca78dfb584155a4db7eb6e7310d17-us5
