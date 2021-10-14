@@ -60,7 +60,7 @@ app.post('/',function(req,res){
     response.on("data",function(data){
         const edata = JSON.parse(data);
         const error = edata.errors;
-        if(error.length != 0){
+        if(error != null){
           res.sendFile(__dirname + "/failure.html");
         }
         else{
