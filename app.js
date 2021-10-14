@@ -1,6 +1,6 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const request = require('request');
+const bodyParser = require('body-parser')
 const https = require('https');
 const config = require('./config');
 
@@ -44,11 +44,11 @@ app.post('/',function(req,res){
           FNAME: fname,
           LNAME: lname
         }
-      } ] }
+      } ] };
 
   const jsonData = JSON.stringify(data);
 
-  const url = 'https://us5.api.mailchimp.com/3.0/lists/'+config.list_ID;// replace list_ID with your list ID
+  const url = `https://us5.api.mailchimp.com/3.0/lists/${config.list_ID}`; // replace list_ID with your list ID
 
   const options = {
     method: 'POST',
@@ -66,16 +66,16 @@ app.post('/',function(req,res){
         else{
           res.sendFile(__dirname + "/success.html");
         }
+        console.log(JSON.parse(data));
     })
   })
-
 
   request.on('error', error => {
     console.error(error)
   })
 
-  request.write(jsonData)
-  request.end()
+  request.write(jsonData);
+  request.end();
 })
 
 app.post("/failure",function(req,res){
