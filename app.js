@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const https = require('https');
+const config = require('./config');
 
 
 // app usage definition
@@ -47,11 +48,11 @@ app.post('/',function(req,res){
 
   const jsonData = JSON.stringify(data);
 
-  const url = "https://us5.api.mailchimp.com/3.0/lists/{list_ID}";// replace list_ID with your list ID
+  const url = 'https://us5.api.mailchimp.com/3.0/lists/'+{config.list_ID};// replace list_ID with your list ID
 
   const options = {
     method: 'POST',
-    auth:'myKey:' // enter you API key
+    auth: config.api_key 
   };
 
   const request = https.request(url,options, function(response) {
